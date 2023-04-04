@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ProyectoBiblioteca",
+    "\\ProyectoBiblioteca\\Controllers",
+    "\\ProyectoBiblioteca\\Logica",
+    "\\ProyectoBiblioteca\\Views",
+    "\\ProyectoBiblioteca\\Views\\Admin",
+    "\\ProyectoBiblioteca\\Views\\Shared"
+  ],
+  "SelectedNode": "\\ProyectoBiblioteca\\Views\\Shared\\_Layout.cshtml",
+  "PreviewInSolutionExplorer": false
+}
