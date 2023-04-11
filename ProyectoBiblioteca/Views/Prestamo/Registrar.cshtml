@@ -58,7 +58,7 @@
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Libro:</span>
+                                        <span class="input-group-text">Articulo:</span>
                                     </div>
                                     <input type="hidden" id="hdidlibro" value="0" />
                                     <input type="text" class="form-control" disabled="disabled" style="background-color: #F9F9F9" id="txttitulolibro">
@@ -74,10 +74,26 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Fecha Devolucion:</span>
                                     </div>
-                                    <input readonly type="text" class="form-control" id="txtfechadevolucion">
+                                    <input readonly type="text" class="form-control fecha" id="txtfechadevolucion" disabled>
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Tipo de prestamo</span>
+                                    </div>
+                                    <select id="txtestadolibros">
+                                        <option value="option1">A Sala</option>
+                                        <option value="option2">A Domicilio</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -94,6 +110,201 @@
 
     </div>
 </div>
+
+
+<div id="modal2" class="modals" style="display:none">
+    <div class="modal-contents">
+
+        <form id="password-form">
+            <label for="password-input">Ingresa la contraseña del administrador:</label>
+            <input type="password" id="password-input" name="password-input">
+            <button type="submit" class="btn btn-success w-25">Verificar</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+
+    .modalss {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    .modal-contents {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+</style>
+
+<script>
+
+
+    // Obtener la fecha de hoy
+    var hoy = new Date();
+
+    // Formatear la fecha como "yyyy-mm-dd"
+    var dia = hoy.getDate();
+    var mes = hoy.getMonth() + 1;
+    var anio = hoy.getFullYear();
+    if (dia < 10) {
+        dia = "0" + dia;
+    }
+    if (mes < 10) {
+        mes = "0" + mes;
+    }
+    var fechaActual = dia + "/" + mes + "/" + anio;
+
+    // Obtener el input de fecha por su ID
+    var inputFecha = document.getElementById("txtfechadevolucion");
+
+    // Asignar la fecha de hoy al valor del input
+    inputFecha.value = fechaActual;
+
+
+
+
+
+
+
+
+
+    const txtfechadevolucion = document.getElementById("txtfechadevolucion");
+    const txtestadolibros = document.getElementById("txtestadolibros");
+    const modal1 = document.getElementById("modal1");
+    const btnregistrar = document.getElementById("btnregistrar");
+    const modal2 = document.getElementById("modal2");
+    const modal3 = document.getElementById("modal3");
+
+    txtestadolibros.addEventListener("change", function () {
+        const selectedOption = txtestadolibros.value;
+        switch (selectedOption) {
+            case "option1":
+                modal2.style.display = "none";
+                txtfechadevolucion.disabled = true;
+                btnregistrar.style.pointerEvents = "";
+                btnregistrar.style.opacity = "";
+
+                break;
+            case "option2":
+                modal2.style.display = "flex";
+                btnregistrar.style.pointerEvents = "none";
+                btnregistrar.style.opacity = 0.5;
+                txtfechadevolucion.removeAttribute("disabled");
+
+                break;
+            case "option3":
+                modal3.style.display = "block";
+                break;
+            default:
+                break;
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+@using System.Data.SqlClient;
+
+
+@{
+
+    // Configurar la cadena de conexión
+    string connectionString = "Data Source=.;Initial Catalog=DB_BIBLIOTECA;Integrated Security=True";
+
+    // Crear la conexión
+    SqlConnection connection = new SqlConnection(connectionString);
+    connection.Open();
+
+    // Crear el comando SQL
+    SqlCommand command = new SqlCommand("SELECT * FROM PERSONA WHERE IdTipoPersona = 1", connection);
+
+    // Ejecutar la consulta SQL y leer los datos
+    SqlDataReader reader = command.ExecuteReader();
+    while (reader.Read())
+    {
+        int id = reader.GetInt32(0);
+        String pass = reader.GetString(4);
+
+
+
+
+
+
+
+        <script>
+
+
+    const form = document.getElementById("password-form");
+    const password = @pass;
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const passwordInput = document.getElementById("password-input").value;
+
+        if (passwordInput == @pass.ToString()) {
+            alert("La contraseña es correcta.");
+            btnregistrar.style.pointerEvents = "";
+            btnregistrar.style.opacity = "";
+
+        } else {
+            alert("La contraseña de administrador es incorrecta.");
+        }
+    });
+
+
+        </script>
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Cerrar la conexión
+    connection.Close();
+}
+
+
+
+
+
+
+
+
 
 
 <!-- Modal -->
@@ -149,7 +360,7 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     </div>
 </div>
 
@@ -172,8 +383,8 @@
                                     <tr>
                                         <th></th>
                                         <th>Titulo</th>
-                                        <th>Autor</th>
                                         <th>Categoria</th>
+                                        <th>Marca</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -186,12 +397,18 @@
     </div>
 </div>
 
-@section scripts{
-   <script>
 
-       var tablalector;
-       var tablalibro;
-       $(document).ready(function () {
+
+
+
+
+
+@section scripts{
+    <script>
+
+        var tablalector;
+        var tablalibro;
+        $(document).ready(function () {
 
            tablalector = $('#tablalector').DataTable({
                 responsive:true,
@@ -209,11 +426,11 @@
                "columns": [
                     {
                         "data": "IdPersona", "render": function (data, type, row, meta) {
-                    
+
                             return $("<button>").addClass("btn btn-primary btn-select-lector btn-sm").append(
                                 $("<i>").addClass("fas fa-check")
                             ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML
-                    
+
                         },
                         "orderable": false,
                         "searchable": false,
@@ -239,11 +456,11 @@
                "columns": [
                     {
                         "data": "IdLibro", "render": function (data, type, row, meta) {
-                    
+
                             return $("<button>").addClass("btn btn-primary btn-select-libro btn-sm").append(
                                 $("<i>").addClass("fas fa-check")
                             ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML
-                    
+
                         },
                         "orderable": false,
                         "searchable": false,
@@ -289,24 +506,24 @@
 
            $("#txtfechadevolucion").datepicker({
                minDate: new Date()
-              
+
            });
        })
 
 
-       $(function () {
+        $(function () {
            $("#txtfechadevolucion").datepicker({
                maxDate: "+3d" // fecha máxima es un año desde hoy
            });
        });
 
-       
-       $("#btnregistrar").on("click", function () {
+
+        $("#btnregistrar").on("click", function () {
            $("#txtestadolibro").val("");
            $("#registromodal").modal("show")
        })
 
-       $("#btnGuardarRegistro").on("click", function () {
+        $("#btnGuardarRegistro").on("click", function () {
 
            var request = {
                objeto: {
@@ -339,21 +556,21 @@
                 }
             });
 
-           
+
        })
 
-       $("#btnbuscarlector").on("click", function () {
+        $("#btnbuscarlector").on("click", function () {
            tablalector.ajax.reload();
            $("#lectoresmodal").modal("show")
        })
-       $("#btnbuscarlibro").on("click", function () {
+        $("#btnbuscarlibro").on("click", function () {
            tablalibro.ajax.reload();
            $("#librosmodal").modal("show")
        })
 
-       
 
-       $(document).on('click', '.btn-select-lector', function (event) {
+
+        $(document).on('click', '.btn-select-lector', function (event) {
            var json = $(this).data("informacion")
            $("#hdidlector").val(json.IdPersona)
            $("#txtcodigopersona").val(json.Codigo)
@@ -363,7 +580,7 @@
            $("#btncancelarregistro").prop("disabled",false)
        });
 
-       $(document).on('click', '.btn-select-libro', function (event) {
+        $(document).on('click', '.btn-select-libro', function (event) {
            var json = $(this).data("informacion")
            $("#hdidlibro").val(json.IdLibro)
            $("#txttitulolibro").val(json.Titulo)
@@ -372,22 +589,18 @@
            $("#btncancelarregistro").prop("disabled", false)
        });
 
-       $("#btncancelarregistro").on("click", function () {
+        $("#btncancelarregistro").on("click", function () {
            limpiarTodo();
        })
 
-       function limpiarTodo() {
+             function limpiarTodo() {
            $("#hdidlector").val("0")
            $("#txtcodigopersona").val("")
            $("#txtnombrespersona").val("")
-
            $("#hdidlibro").val("0")
            $("#txttitulolibro").val("")
-
            $("#txtfechadevolucion").val("")
-
            $("#btncancelarregistro").prop("disabled", true)
-
        }
     </script>
 

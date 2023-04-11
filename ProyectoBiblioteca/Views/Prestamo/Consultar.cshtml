@@ -1,157 +1,156 @@
 ﻿
-@{
-    ViewBag.Title = "Consultar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewBag.Title = "Consultar";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<div class="card shadow mb-4">
+    <div class="card shadow mb-4">
 
-    <div class="card-body">
-        <div class="form-row align-items-end">
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Estado Prestamo:</label>
-                    <select class="form-control" id="cboestadoprestamo"></select>
+        <div class="card-body">
+            <div class="form-row align-items-end">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Estado Prestamo:</label>
+                        <select class="form-control" id="cboestadoprestamo"></select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Lectores:</label>
+                        <select class="form-control" id="cbolectores"></select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <button id="btnbuscar" class="btn btn-primary btn-block">Buscar</button>
+                    </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Lectores:</label>
-                    <select class="form-control" id="cbolectores"></select>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-group">
-                    <button id="btnbuscar" class="btn btn-primary btn-block">Buscar</button>
-                </div>
-            </div>
-        </div>
 
-    </div>
-</div>
-
-<div class="card shadow">
-
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="tabla" style="width:100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Estado Prestamo</th>
-                                <th>Codigo Lector</th>
-                                <th>Nombre Lector</th>
-                                <th>Titulo Libro</th>
-                                <th>Fecha Devolucion</th>
-                                <th>Fecha Devolucion Confirmado</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Estado Prestamo</th>
-                                <th>Codigo Lector</th>
-                                <th>Nombre Lector</th>
-                                <th>Titulo Libro</th>
-                                <th>Fecha Devolucion</th>
-                                <th>Fecha Devolucion Confirmado</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="devolvermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Devolucion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Estado del libro entregado:</label>
-                    <textarea class="form-control" id="txtestadolibro" disabled="disabled"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Estado del libro recibido:</label>
-                    <textarea class="form-control" id="txtestadolibrorecibido"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
-                <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
-            </div>
         </div>
     </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="detallemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Detalle Devolucion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Estado del libro entregado:</label>
-                    <textarea class="form-control" id="txtviewestadolibroentregado" disabled="disabled"></textarea>
+    <div class="card shadow">
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tabla" style="width:100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Estado Prestamo</th>
+                                    <th>Codigo Lector</th>
+                                    <th>Nombre Lector</th>
+                                    <th>Titulo Libro</th>
+                                    <th>Fecha Devolucion</th>
+                                    <th>Fecha Devolucion Confirmado</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Estado Prestamo</th>
+                                    <th>Codigo Lector</th>
+                                    <th>Nombre Lector</th>
+                                    <th>Titulo Libro</th>
+                                    <th>Fecha Devolucion</th>
+                                    <th>Fecha Devolucion Confirmado</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Estado del libro recibido:</label>
-                    <textarea class="form-control" id="txtviewestadolibrorecibido" disabled></textarea>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="devolvermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Devolucion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Estado del libro entregado:</label>
+                        <textarea class="form-control" id="txtestadolibro" disabled="disabled"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Estado del libro recibido:</label>
+                        <textarea class="form-control" id="txtestadolibrorecibido"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-
-
-
-
-
-
-
-
-<div class="card shadow mb-4">
-
-    <div class="card-body">
-        <div class="form-row align-items-end">
-            <div class="col-9">
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Para mirar todas las bitacoras(Inicios,Cierres e intentos fallidos de Sesion) seleccione aqui</label>
-                    
+    <!-- Modal -->
+    <div class="modal fade" id="detallemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Detalle Devolucion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            
-            <div class="col-2">
-                <div class="form-group">
-                    <button id="botonMostrar" class="btn btn-primary btn-block">Mirar Aqui</button>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Estado del libro entregado:</label>
+                        <textarea class="form-control" id="txtviewestadolibroentregado" disabled="disabled"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Estado del libro recibido:</label>
+                        <textarea class="form-control" id="txtviewestadolibrorecibido" disabled></textarea>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
 
+
+
+
+
+
+
+
+
+
+
+    <div class="card shadow mb-4">
+
+        <div class="card-body">
+            <div class="form-row align-items-end">
+                <div class="col-9">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Para mirar todas las bitacoras(Inicios,Cierres e intentos fallidos de Sesion) seleccione aqui</label>
+
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="form-group">
+                        <button id="botonMostrar" class="btn btn-primary btn-block">Mirar Aqui</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 
 
@@ -163,63 +162,63 @@
 
 @using System.Data.SqlClient;
 
-<div class="dropdown">
+    <div class="dropdown">
 
 
-</div>
+    </div>
 
 
 
 
 
-<div id="miElemento" style="display: none;" class="border border-primary">
+    <div id="miElemento" style="display: none;" class="border border-primary">
 
 
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12">
 
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="tabla" style="width:100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th style="width:200px">Fecha Exacta</th>
-                                <th style="width:200px">Correo Electronico</th>
-                                <th style="width:200px">Nivel</th>
-                                <th style="width:200px">Mensaje</th>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tabla" style="width:100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width:200px">Fecha Exacta</th>
+                                    <th style="width:200px">Correo Electronico</th>
+                                    <th style="width:200px">Nivel</th>
+                                    <th style="width:200px">Mensaje</th>
 
-                            </tr>
-                    </table>
+                                </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        @{
+            @{
 
-            // Configurar la cadena de conexión
-            string connectionString = "Data Source=.;Initial Catalog=DB_BIBLIOTECA;Integrated Security=True";
+                // Configurar la cadena de conexión
+                string connectionString = "Data Source=.;Initial Catalog=DB_BIBLIOTECA;Integrated Security=True";
 
-            // Crear la conexión
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
+                // Crear la conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
 
-            // Crear el comando SQL
-            SqlCommand command = new SqlCommand("SELECT * FROM logss", connection);
+                // Crear el comando SQL
+                SqlCommand command = new SqlCommand("SELECT * FROM logss", connection);
 
-            // Ejecutar la consulta SQL y leer los datos
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                DateTime id = reader.GetDateTime(0);
-                string user = reader.GetString(1);
-                string level = reader.GetString(2);
-                string msj = reader.GetString(3);
-
-           
+                // Ejecutar la consulta SQL y leer los datos
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    DateTime id = reader.GetDateTime(0);
+                    string user = reader.GetString(1);
+                    string level = reader.GetString(2);
+                    string msj = reader.GetString(3);
 
 
 
-               
+
+
+
                     <div class="row">
                         <div class="col-sm-12">
 
@@ -238,35 +237,33 @@
                         </div>
 
                     </div>
-               
 
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Cerrar la conexión
+                connection.Close();
             }
+        </div>
 
 
 
-
-
-
-
-
-
-
-
-                   
-
-                    // Cerrar la conexión
-                    connection.Close();
-                    }
-                </div>
-
-
-
-                @section scripts{
-                    <script>
+        @section scripts{
+            <script>
         var tabladata;
-
         $(document).ready(function () {
-
             jQuery.ajax({
                 url: '@Url.Action("ListarPersona", "Biblioteca")',
                 type: "GET",
@@ -287,7 +284,6 @@
                     console.log(error)
                 }
             });
-
             jQuery.ajax({
                 url: '@Url.Action("ListarEstados", "Prestamo")',
                 type: "GET",
@@ -306,8 +302,6 @@
                     console.log(error)
                 }
             });
-
-
             tabladata = $('#tabla').DataTable({
                 responsive:true,
                 "ajax": {
@@ -354,49 +348,34 @@
                                     $("<i>").addClass("fas fa-undo-alt")
                                 ).attr({ "data-informacion": JSON.stringify(row) })[0].outerHTML
                             }
-
-
                         },
                         "orderable": false,
                         "searchable": false,
                         "width": "90px"
                     }
-
                 ],
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
                 }
             });
         })
-
         $("#btnbuscar").on("click", function () {
             tabladata.ajax.url('@Url.Action("Listar", "Prestamo")' + "?idestadoprestamo=" + $("#cboestadoprestamo").val() + "&idpersona=" + $("#cbolectores").val()).load();
         })
-
-
         $(document).on('click', '.btn-devolver', function (event) {
             var json = $(this).data("informacion")
-
             $("#txtestadolibro").val(json.EstadoEntregado);
             $("#btnGuardar").data("idprestamo", json.IdPrestamo);
-
             $("#devolvermodal").modal("show");
-
-
         });
-
         $(document).on('click', '.btn-detalle', function (event) {
             var json = $(this).data("informacion")
-
             $("#txtviewestadolibroentregado").val(json.EstadoEntregado);
             $("#txtviewestadolibrorecibido").val(json.EstadoRecibido);
-
             $("#detallemodal").modal("show");
         });
-
         $("#btnGuardar").on("click", function () {
             var _idprestamo = $(this).data("idprestamo");
-
             jQuery.ajax({
                 url: '@Url.Action("Devolver", "Prestamo")',
                 type: "POST",
@@ -417,16 +396,11 @@
                 }
             });
         })
+            </script>
 
-
-
-
-                    </script>
-
-                    <script>
-                        document.getElementById("botonMostrar").addEventListener("click", function () {
-                            document.getElementById("miElemento").style.display = "block";
-                        });
-                    </script>
-                }
-
+            <script>
+                document.getElementById("botonMostrar").addEventListener("click", function () {
+                    document.getElementById("miElemento").style.display = "block";
+                });
+            </script>
+        }

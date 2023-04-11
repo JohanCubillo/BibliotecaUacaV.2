@@ -77,7 +77,7 @@
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                        aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-list"></i>
-                        <span>Libros</span>
+                        <span>Prestamos</span>
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
@@ -119,10 +119,10 @@
                                  data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
                                     <h6 class="collapse-header">Registrar:</h6>
-                                    <a class="collapse-item" href="@Url.Action("Libros", "Biblioteca")">Libros</a>
-                                    <a class="collapse-item" href="@Url.Action("Autores", "Biblioteca")">Autores</a>
-                                    <a class="collapse-item" href="@Url.Action("Editorial", "Biblioteca")">Editorial</a>
-                                    <a class="collapse-item" href="@Url.Action("Categoria", "Biblioteca")">Categoria</a>
+                                    <a class="collapse-item" href="@Url.Action("Libros", "Biblioteca")">Inventarios</a>
+                                    <a class="collapse-item" href="@Url.Action("Autores", "Biblioteca")">Tipo de inventario</a>
+                                    <a class="collapse-item" href="@Url.Action("Editorial", "Biblioteca")">Colores</a>
+                                    <a class="collapse-item" href="@Url.Action("Categoria", "Biblioteca")">Marca</a>
                                 </div>
                             </div>
                         </li>
@@ -143,8 +143,8 @@
                                  data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
                                     <h6 class="collapse-header">Registrar:</h6>
-                                    <a class="collapse-item" href="@Url.Action("Libros", "Biblioteca")">Mobiliario</a>
-                                    <a class="collapse-item" href="@Url.Action("Autores", "Biblioteca")">Equipo</a>
+                                    <a class="collapse-item" href="@Url.Action("Libros", "Biblioteca")">Inventarios</a>
+                                    
 
                                 </div>
                             </div>
@@ -167,52 +167,34 @@
                                     <h6 class="collapse-header">Registrar:</h6>
                                     @{if (objeto.oTipoPersona.IdTipoPersona == 1)
                                         {
-                                            <a class="collapse-item" href="@Url.Action("Usuarios","Persona")">	Administrador</a>
+                                            <a class="collapse-item" href="@Url.Action("Usuarios","Persona")">	Nuevo Usuario </a>
                                         }
                                     }
-                                    <a class="collapse-item" href="@Url.Action("Lectores","Persona")">	Bibliotecario</a>
-                                    <a class="collapse-item" href="@Url.Action("Lectores","Persona")">	Estudiante</a>
-                                    <a class="collapse-item" href="@Url.Action("Lectores","Persona")">	Docente</a>
+
                                 </div>
                             </div>
                         </li>
                     }
                 }
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTried"
-                       aria-expanded="true" aria-controls="collapseTried">
-                        <i class="fas fa-list"></i>
-                        <span>Informes y Bitacora</span>
-                    </a>
-                    <div id="collapseTried" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
+                @{ if (objeto.oTipoPersona.IdTipoPersona == 1)
+                    {
 
-                            <a class="collapse-item" href="@Url.Action("Consultar", "Prestamo")">Consultar</a>
-                        </div>
-                    </div>
-                </li>
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTried"
+                               aria-expanded="true" aria-controls="collapseTried">
+                                <i class="fas fa-list"></i>
+                                <span>Informes y Bitacora</span>
+                            </a>
+                            <div id="collapseTried" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
 
+                                    <a class="collapse-item" href="@Url.Action("Consultar", "Prestamo")">Consultar</a>
+                                </div>
+                            </div>
+                        </li>
+                    }}
                 <!-- Bitracora -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwod"
-                       aria-expanded="true" aria-controls="collapseTwod">
-                        <i class="fas fa-list"></i>
-                        <span>Bitacora</span>
-                    </a>
-                    <div id="collapseTwod" class="collapse" aria-labelledby="headingTwod" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            
-                            <a class="collapse-item" href="@Url.Action("Index", "Logs")">Consultar</a>
-                        </div>
-                    </div>
-                </li>
-
-
-
-
-
-
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
                 <!-- Sidebar Toggler (Sidebar) -->

@@ -18,6 +18,7 @@ namespace ProyectoBiblioteca.Controllers
         {
             return View();
         }
+       
 
         public ActionResult Autores()
         {
@@ -56,6 +57,7 @@ namespace ProyectoBiblioteca.Controllers
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
 
+      
 
 
         [HttpGet]
@@ -96,6 +98,9 @@ namespace ProyectoBiblioteca.Controllers
             respuesta = (objeto.IdAutor == 0) ? AutorLogica.Instancia.Registrar(objeto) : AutorLogica.Instancia.Modificar(objeto);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
+
+      
+
         [HttpPost]
         public JsonResult EliminarAutor(int id)
         {
@@ -175,6 +180,8 @@ namespace ProyectoBiblioteca.Controllers
             respuesta = LibroLogica.Instancia.Eliminar(id);
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
         }
+
+
 
 
         [HttpGet]

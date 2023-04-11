@@ -60,6 +60,7 @@ namespace ProyectoBiblioteca.Controllers
                     commands.Parameters.AddWithValue("@correo", correo);
 
 
+
                     bool estado = (bool)commands.ExecuteScalar();
 
                     if (!estado)
